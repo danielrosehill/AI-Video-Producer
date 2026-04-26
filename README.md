@@ -1,4 +1,4 @@
-# AI Video Production Lifecycle
+# AI Video Producer
 
 A Claude Code plugin that drives the end-to-end lifecycle of a single AI-generated video project: creative brief → model selection → character sheets → script → storyboard → generation pipelines → clip assembly → final export.
 
@@ -63,7 +63,7 @@ Configure these per the user's existing setup. The plugin reads model selection 
 ## Installation
 
 ```bash
-claude plugins install ai-video-production-lifecycle@danielrosehill
+claude plugins install ai-video-producer@danielrosehill
 ```
 
 ## License

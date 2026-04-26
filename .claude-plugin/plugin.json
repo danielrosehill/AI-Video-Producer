@@ -1,12 +1,12 @@
 {
-  "name": "ai-video-production-lifecycle",
-  "version": "1.0.0",
+  "name": "ai-video-producer",
+  "version": "1.0.1",
   "description": "Drive a single AI-generated video project end-to-end: creative brief, model selection, character sheets, script, storyboard, generation pipelines (text-to-image, image-to-video, voice, lip-sync), clip assembly, and final export. State-aware lifecycle plugin designed to operate inside a per-project workspace.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"
   },
-  "repository": "https://github.com/danielrosehill/AI-Video-Production-Lifecycle",
+  "repository": "https://github.com/danielrosehill/AI-Video-Producer",
   "license": "MIT",
   "keywords": ["video", "generative-ai", "fal", "replicate", "elevenlabs", "lifecycle", "pipeline", "lip-sync", "text-to-video", "image-to-video"]
 }
