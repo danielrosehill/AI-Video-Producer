@@ -12,6 +12,16 @@
       "env": {
         "REPLICATE_API_TOKEN": "${REPLICATE_API_TOKEN}"
       }
+    },
+    "minimax": {
+      "command": "uvx",
+      "args": ["minimax-mcp", "-y"],
+      "env": {
+        "MINIMAX_API_KEY": "${MINIMAX_API_KEY}",
+        "MINIMAX_API_HOST": "${MINIMAX_API_HOST}",
+        "MINIMAX_MCP_BASE_PATH": "${MINIMAX_MCP_BASE_PATH}",
+        "MINIMAX_API_RESOURCE_MODE": "${MINIMAX_API_RESOURCE_MODE}"
+      }
     }
   }
 }

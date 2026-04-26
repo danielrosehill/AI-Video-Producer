@@ -1,0 +1,10 @@
+{
+  "name": "ai-video-producer-runners",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Provider SDK runners (fal-js) invoked by AI Video Producer pipeline skills.",
+  "dependencies": {
+    "@fal-ai/client": "^1.2.0"
+  }
+}

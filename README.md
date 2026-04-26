@@ -9,7 +9,7 @@ This is a **state-aware lifecycle** plugin — it operates inside a per-project 
 ### Commands
 
 - `/install-video-workspace` — scaffold the per-project folder structure + project CLAUDE.md into the current directory.
-- `/setup-credentials` — one-time setup for fal.ai + Replicate API keys. Writes `~/.config/ai-video-producer/.env` and wires it into your shell profile so the bundled MCP servers always have keys.
+- `/setup-credentials` — one-time setup for fal.ai, Replicate, WaveSpeed, and MiniMax API keys, plus runner toolchain bootstrap (npm + pip). Writes `~/.config/ai-video-producer/.env` and wires it into your shell profile so the bundled MCP servers always have keys.
 - `/onboard` — capture the creative brief and tools-and-models selection.
 - `/define-character` — add a recurring character/subject sheet.
 - `/draft-script` — produce a script draft from the brief.
@@ -52,12 +52,24 @@ Production utilities:
 
 ## Bundled MCP servers
 
-The plugin ships with two MCP servers preconfigured (see `.mcp.json`):
+The plugin ships with three MCP servers preconfigured (see `.mcp.json`):
 
-- **fal-ai** — hosted at `https://mcp.fal.ai/mcp` (HTTP transport, requires `FAL_KEY`).
-- **replicate** — local stdio via `npx -y replicate-mcp` (requires `REPLICATE_API_TOKEN`).
+- **fal-ai** — hosted at `https://mcp.fal.ai/mcp` (HTTP transport, requires `FAL_KEY`). Catalogue browsing only; actual generation goes through `runners/fal_run.mjs`.
+- **replicate** — local stdio via `npx -y replicate-mcp` (requires `REPLICATE_API_TOKEN`). Used for both browsing and execution.
+- **minimax** — local stdio via `uvx minimax-mcp` (requires `MINIMAX_API_KEY` + `MINIMAX_API_HOST`). Provides `generate_video` (Hailuo), `text_to_image`, `text_to_audio`, `voice_clone`, `voice_design`, `music_generation`.
 
 Credentials live in `~/.config/ai-video-producer/.env`. The `/setup-credentials` command creates that file and adds a loader line to your shell profile so every shell that launches Claude Code has the values in its environment. See `.env.example` for the full template.
+
+## SDK runners
+
+For execution-heavy providers, the plugin ships SDK wrappers under `runners/` instead of relying on MCP catalogue servers:
+
+- **fal-js** (`runners/fal_run.mjs`, `@fal-ai/client`) — queues jobs, polls, downloads results. Requires `FAL_KEY`.
+- **WaveSpeed Python** (`runners/wavespeed_run.py`, `wavespeed`) — same shape, for `wavespeed-ai/*` models. Requires `WAVESPEED_API_KEY`.
+
+Both runners share a uniform CLI contract — see `runners/README.md`. They print a JSON envelope to stdout (`{model, output_files, data}`) and stream progress to stderr, so any pipeline skill can shell out and parse the result.
+
+`/setup-credentials` installs both toolchains (`npm install` for fal-js, a venv + `pip install -r requirements.txt` for wavespeed).
 
 ## Typical workflow
 
