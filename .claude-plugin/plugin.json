@@ -1,6 +1,6 @@
 {
   "name": "ai-video-producer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Drive a single AI-generated video project end-to-end: creative brief, model selection, character sheets, script (script-writer agent), storyboard, generation pipelines (text-to-image, image-to-video, voice, lip-sync), GPU-aware concatenation/normalisation/aspect conversion, ComfyUI import-export, budget estimation, and final export. State-aware lifecycle plugin designed to operate inside a per-project workspace. Ships with fal.ai + Replicate MCP servers preconfigured against a persistent ~/.config/ai-video-producer/.env.",
   "author": {
     "name": "Daniel Rosehill",
